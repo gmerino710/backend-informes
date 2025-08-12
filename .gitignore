@@ -1,0 +1,39 @@
+# Archivos y directorios de entorno virtual
+.venv/
+venv/
+env/
+enviroments/
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+
+# Archivos de caché del IDE (como VSCode, PyCharm)
+.idea/
+.vscode/
+
+# Archivos de registro y bases de datos
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos de configuración de variables de entorno
+.env
+.env.local
+
+# Archivos de configuración y directorios de Docker
+!Dockerfile
+!docker-compose.yml
+.dockerignore
+
+# Archivos generados automáticamente
+migrations/
+
+# Archivos de la build de frontend (si se usa en la misma carpeta)
+dist/
+build/
+
+
+requirements.txt# Archivos de configuración de pruebas
+pytest_cache/       
