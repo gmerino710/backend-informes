@@ -17,7 +17,7 @@ DB_NAME = os.getenv("DB_NAME")
 # This is a better way to format the string
 SQLALCHEMY_DATABASE_URL = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 # Crea el motor de la base de datos
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_engine(SQLALCHEMY_DATABASE_URL,echo=True)
 
 # Crea una sesión de la base de datos
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
