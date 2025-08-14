@@ -25,6 +25,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # La clase base para nuestros modelos ORM
 Base = declarative_base()
 
+Base.metadata.create_all(bind=engine);
+
 # Dependencia para obtener la sesión de la base de datos
 def get_db():
     db = SessionLocal()

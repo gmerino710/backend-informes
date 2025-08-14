@@ -9,6 +9,8 @@ class Proyecto(Base):
     nombre = Column(String, index=True)
     descripcion = Column(String)
     estado = Column(Boolean , default=True)  # 1 para activo, 0 para inactivo
+    informes = relationship("Informe", back_populates="proyecto")
+
 '''
 # También puedes crear un modelo Pydantic para la respuesta de la API
 from pydantic import BaseModel

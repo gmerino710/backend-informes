@@ -2,7 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.router import router
 
-
+#importes modelos 
+from app.models.model_usuarios import Usuario
+from app.models.model_informes import Informe
+from app.core.database import Base, engine
 app = FastAPI(
     title="Informes pruebas ",
     description="Descripción de tu API",
@@ -20,4 +23,5 @@ app.add_middleware(
     allow_headers=["*"],            
 );
 app.include_router(router)
+Base.metadata.create_all(bind=engine)
 
