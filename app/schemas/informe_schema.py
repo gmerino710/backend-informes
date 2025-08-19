@@ -1,7 +1,8 @@
 from pydantic import BaseModel,field_validator
 from typing import Optional
 from datetime import date
-
+from .usuario_schema import UsuarioBase
+from .proyecto_schema import ProyectoResponse
 class InformeBase(BaseModel):
     titulo: str
     descripcion: str
@@ -20,7 +21,11 @@ class InformeCreate(InformeBase):
     
 class InformeResponse(InformeBase):     
     id: int
+    proyecto: ProyectoResponse
+    encargado: UsuarioBase
+    id_proyecto: int
+
 
     class Config:
         orm_mode = True  
-            
+        from_attributes = True

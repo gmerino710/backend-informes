@@ -2,7 +2,7 @@ from fastapi import status,Depends, HTTPException,APIRouter
 from fastapi.responses import JSONResponse;
 from app.schemas.informe_schema import  InformeCreate,InformeResponse
 from app.models.model_informes import Informe
-from sqlalchemy.orm import Session    
+from sqlalchemy.orm import Session,joinedload    
 from app.core.database import get_db  
 router = APIRouter()
 
@@ -10,7 +10,9 @@ router = APIRouter()
 
 @router.get("/", response_model=list[InformeResponse], status_code=status.HTTP_200_OK )
 def get_informes(db: Session = Depends(get_db)):
-    informes = db.query(Informe).all()
+    informes = db.query(Informe).options(joinedload(Informe.proyecto),
+                      joinedload(Informe.encargado)                   
+        ).all()
     return informes
     
 @router.get("/{informe_id}", response_model=InformeResponse, status_code=status.HTTP_200_OK )

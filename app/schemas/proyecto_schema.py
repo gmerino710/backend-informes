@@ -18,3 +18,4 @@ class ProyectoResponse(ProyectoBase):
 
     class Config:
         orm_mode = True
+        from_attributes = True
